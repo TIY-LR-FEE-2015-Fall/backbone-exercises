@@ -6,7 +6,31 @@
   <link rel="stylesheet" href="/app.css">
 </head>
 <body>
-  <div id="outlet"></div>
+  <nav>
+    <ul class="navbar">
+      <li><a href="#">All Items</a></li>
+      <li><a href="#new">New Item</a></li>
+    </ul>
+  </nav>
+
+  <div id="outlet">
+    <ul class="items-list">
+      <li class="shop-item">
+        <a href="#12345">
+          <span class="shop-item__price">4.95</span>
+          <span class="shop-item__name">Running Socks</span>
+          <span class="shop-item__inventory">3</span>
+        </a>
+      </li>
+      <li class="shop-item">
+        <a href="#12345">
+          <span class="shop-item__price">4.95</span>
+          <span class="shop-item__name">Running Socks</span>
+          <span class="shop-item__inventory">3</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 
   <script src="/vendor.js" charset="utf-8"></script>
   <script src="/app.js" charset="utf-8"></script>
