@@ -7,5 +7,14 @@ export default Backbone.Model.extend({
     price: 0,
     inventory: 1,
     description: '',
+    listDate: '',
+  },
+
+  initialize() {
+    var listDate = this.get('listDate');
+
+    if (listDate === '') {
+      this.set('listDate', new Date());
+    }
   },
 });

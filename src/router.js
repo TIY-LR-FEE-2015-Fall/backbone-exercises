@@ -15,13 +15,23 @@ var Router = Backbone.Router.extend({
     ':id/edit': 'edit',
   },
 
+  cleanUpListners() {
+    // Stops item details from showing up again
+    this.collection.off('sync');
+  },
+
   initialize() {
     // Grab all items from the server
     this.collection = new ItemCollection();
     this.collection.fetch();
+
+    window.setInterval(() => {
+      this.collection.fetch();
+    }, 1000);
   },
 
   allList() {
+    this.cleanUpListners();
     // Show list to user
     var list = new ItemList({collection: this.collection});
 
@@ -29,6 +39,7 @@ var Router = Backbone.Router.extend({
   },
 
   newItemForm() {
+    this.cleanUpListners();
     // Create an empty item model
     var item = new ItemModel();
 
@@ -44,8 +55,10 @@ var Router = Backbone.Router.extend({
    * @return
    */
   lookupModel(id, cb) {
+    this.cleanUpListners();
+
     // Look up the item with the id
-    this.collection.on('sync', () => {
+    this.collection.once('sync', () => {
       var model = this.collection.get(id);
 
       if (model) {
