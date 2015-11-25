@@ -2,6 +2,7 @@ import BookmarkModel from './models/bookmark';
 import BookmarkCollection from './collections/bookmarks';
 import BookmarkForm from './views/bookmark-form';
 import BookmarkList from './views/bookmark-list';
+import TagList from './views/tag-list';
 
 var Router = Backbone.Router.extend({
   collection: null,
@@ -17,6 +18,11 @@ var Router = Backbone.Router.extend({
 
     // Grab all bookmarks from server
     this.collection.fetch();
+
+    // Display sidebar
+    var list = new TagList({collection: this.collection});
+
+    $('.sidebar').html(list.el);
   },
 
   newBookmark() {
