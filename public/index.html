@@ -6,7 +6,32 @@
   <link rel="stylesheet" href="/app.css">
 </head>
 <body>
-  <div id="outlet"></div>
+  <nav>
+    <ul>
+      <li><a href="#">All Bookmark</a></li>
+      <li><a href="#new">New Bookmark</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="sidebar">
+      <ul class="tag-list">
+        <li class="tag"><a href="#shopping">Shopping</a></li>
+        <li class="tag"><a href="#recipes">Recipes</a></li>
+      </ul>
+    </div>
+
+    <div class="main" id="outlet">
+      <ul class="bookmark-list">
+        <li class="bookmark">
+          <a href="http://amazon.com">Amazon - Shopping</a>
+        </li>
+        <li class="bookmark">
+          <a href="http://wayfair.com">Wayfair - Shopping</a>
+        </li>
+      </ul>
+    </div>
+  </main>
 
   <script src="/vendor.js" charset="utf-8"></script>
   <script src="/app.js" charset="utf-8"></script>
