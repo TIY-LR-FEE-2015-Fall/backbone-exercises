@@ -33,7 +33,7 @@ var Router = Backbone.Router.extend({
     var item = new ItemModel();
 
     // Show form to user
-    var form = new ItemForm({model: item});
+    var form = new ItemForm({model: item, collection: this.collection});
 
     $('#outlet').html(form.el);
   },
@@ -71,7 +71,7 @@ var Router = Backbone.Router.extend({
   edit(id) {
     this.lookupModel(id, (model) => {
       // Show the detail view for the current model
-      var form = new ItemForm({model});
+      var form = new ItemForm({model, collection: this.collection});
       $('#outlet').html(form.el);
     });
   },

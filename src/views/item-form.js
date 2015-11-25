@@ -1,5 +1,6 @@
 export default Backbone.View.extend({
   model: null,
+  collection: null,
 
   tagName: 'form',
 
@@ -20,6 +21,8 @@ export default Backbone.View.extend({
       // Save the model
       this.model.save({name, inventory, price, description}).then(() => {
         // Redirect somewhere
+        this.collection.add(this.model);
+
         Backbone.history.navigate('', {trigger: true});
       });
     },
