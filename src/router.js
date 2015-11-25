@@ -1,6 +1,7 @@
 import ItemModel from './models/item';
 import ItemCollection from './collections/items';
 import ItemForm from './views/item-form';
+import ItemList from './views/item-list';
 
 var Router = Backbone.Router.extend({
   // Plan out routes
@@ -17,6 +18,9 @@ var Router = Backbone.Router.extend({
     allItems.fetch();
 
     // Show list to user
+    var list = new ItemList({collection: allItems});
+
+    $('#outlet').html(list.el);
   },
 
   newItemForm() {
