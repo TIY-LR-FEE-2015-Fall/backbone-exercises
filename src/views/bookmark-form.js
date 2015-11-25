@@ -1,5 +1,7 @@
 export default Backbone.View.extend({
   model: null,
+  collection: null,
+
   titleInput: null,
   tagInput: null,
   urlInput: null,
@@ -23,6 +25,7 @@ export default Backbone.View.extend({
       // Save the model
       this.model.save({title, tag, url}).then(() => {
         alert('A new bookmark was saved');
+        this.collection.add(this.model);
 
         // Redirect to the home page
         Backbone.history.navigate('', {trigger: true});

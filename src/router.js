@@ -30,7 +30,7 @@ var Router = Backbone.Router.extend({
     var bookmark = new BookmarkModel();
 
     // Display bookmark form to user
-    var form = new BookmarkForm({model: bookmark});
+    var form = new BookmarkForm({model: bookmark, collection: this.collection});
 
     $('#outlet').html(form.el);
   },
