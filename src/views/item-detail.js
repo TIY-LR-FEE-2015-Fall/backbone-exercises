@@ -24,6 +24,8 @@ export default Backbone.View.extend({
       </h2>
 
       <p>${model.get('description')}</p>
+
+      <a href="#${model.id}/edit">Edit</a>
     `;
   },
 });

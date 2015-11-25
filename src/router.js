@@ -67,6 +67,14 @@ var Router = Backbone.Router.extend({
       $('#outlet').html(detail.el);
     });
   },
+
+  edit(id) {
+    this.lookupModel(id, (model) => {
+      // Show the detail view for the current model
+      var form = new ItemForm({model});
+      $('#outlet').html(form.el);
+    });
+  },
 });
 
 export default Router;

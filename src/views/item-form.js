@@ -30,31 +30,39 @@ export default Backbone.View.extend({
   },
 
   render() {
-    this.$el.html(this.template());
+    this.$el.html(this.template(this.model));
+  },
+
+  getHeading(model) {
+    if (model.id) {
+      return `Editing ${model.get('name')}`;
+    }
+
+    return `New Item`;
   },
 
   template(model) {
     return `
-      <h2 class="item-form__header">New Item</h2>
+      <h2 class="item-form__header">${this.getHeading(model)}</h2>
 
       <div class="input-field">
         <label for="item-name" class="item-form__label">Name:</label>
-        <input type="text" id="item-name" class="item-form__input">
+        <input type="text" id="item-name" class="item-form__input" value="${model.get('name')}">
       </div>
 
       <div class="input-field">
         <label for="item-price"class="item-form__label">Price:</label>
-        <input type="number" step="0.05" id="item-price" class="item-form__input">
+        <input type="number" step="0.05" id="item-price" class="item-form__input" value="${model.get('price')}">
       </div>
 
       <div class="input-field">
         <label for="item-inventory" class="item-form__label">Inventory:</label>
-        <input type="number" id="item-inventory" class="item-form__input">
+        <input type="number" id="item-inventory" class="item-form__input" value="${model.get('inventory')}">
       </div>
 
       <div class="input-field">
         <label for="item-description" class="item-form__label">Description:</label>
-        <textarea type="number" id="item-description" class="item-form__input"></textarea>
+        <textarea type="number" id="item-description" class="item-form__input">${model.get('description')}</textarea>
       </div>
 
       <button class="item-form__submit">Submit</button>
