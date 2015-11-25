@@ -1,4 +1,5 @@
 import BookmarkModel from './models/bookmark';
+import BookmarkForm from './views/bookmark-form';
 
 var Router = Backbone.Router.extend({
   routes: {
@@ -12,7 +13,9 @@ var Router = Backbone.Router.extend({
     var bookmark = new BookmarkModel();
 
     // Display bookmark form to user
-    // debugger;
+    var form = new BookmarkForm({model: bookmark});
+
+    $('#outlet').html(form.el);
   },
 });
 
