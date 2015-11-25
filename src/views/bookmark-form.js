@@ -1,8 +1,33 @@
 export default Backbone.View.extend({
+  model: null,
+  titleInput: null,
+  tagInput: null,
+  urlInput: null,
+
   tagName: 'form',
 
   attributes: {
     class: 'bookmark-form',
+  },
+
+  events: {
+    submit(ev) {
+      ev.preventDefault();
+
+      // Get user input
+      var title = this.titleInput.val();
+      var tag = this.tagInput.val();
+      var url = this.urlInput.val();
+
+      // Set properties on our current model
+      // Save the model
+      this.model.save({title, tag, url}).then(() => {
+        alert('A new bookmark was saved');
+
+        // Redirect to the home page
+        Backbone.history.navigate('', {trigger: true});
+      });
+    },
   },
 
   template() {
@@ -30,6 +55,10 @@ export default Backbone.View.extend({
 
   initialize() {
     this.render();
+
+    this.titleInput = this.$el.find('#bookmark-title');
+    this.tagInput = this.$el.find('#bookmark-tag');
+    this.urlInput = this.$el.find('#bookmark-url');
   },
 
   render() {
