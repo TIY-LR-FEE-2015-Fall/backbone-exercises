@@ -5,6 +5,16 @@ export default Backbone.View.extend({
     class: 'item-detail',
   },
 
+  events: {
+    'click .item-detail__delete'(ev) {
+      ev.preventDefault();
+
+      this.model.destroy().then(() => {
+        Backbone.history.navigate('', {trigger: true});
+      });
+    },
+  },
+
   initialize() {
     this.render();
 
@@ -26,6 +36,7 @@ export default Backbone.View.extend({
       <p>${model.get('description')}</p>
 
       <a href="#${model.id}/edit">Edit</a>
+      <a href="#" class="item-detail__delete">Delete</a>
     `;
   },
 });
