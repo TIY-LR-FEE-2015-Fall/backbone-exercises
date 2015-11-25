@@ -1,8 +1,28 @@
 export default Backbone.View.extend({
+  model: null,
+
   tagName: 'form',
 
   attributes: {
     class: 'item-form',
+  },
+
+  events: {
+    submit(ev) {
+      ev.preventDefault();
+
+      // Grab user input
+      var name = this.$el.find('#item-name').val();
+      var inventory = this.$el.find('#item-inventory').val();
+      var price = this.$el.find('#item-price').val();
+      var description = this.$el.find('#item-description').val();
+
+      // Save the model
+      this.model.save({name, inventory, price, description}).then(() => {
+        // Redirect somewhere
+        Backbone.history.navigate('', {trigger: true});
+      });
+    },
   },
 
   initialize() {
@@ -23,8 +43,8 @@ export default Backbone.View.extend({
       </div>
 
       <div class="input-field">
-        <label for="item-price" class="item-form__label">Price:</label>
-        <input type="number" id="item-price" class="item-form__input">
+        <label for="item-price"class="item-form__label">Price:</label>
+        <input type="number" step="0.05" id="item-price" class="item-form__input">
       </div>
 
       <div class="input-field">
