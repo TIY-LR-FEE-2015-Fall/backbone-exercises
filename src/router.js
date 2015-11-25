@@ -12,7 +12,7 @@ var Router = Backbone.Router.extend({
     var bookmark = new BookmarkModel();
 
     // Display bookmark form to user
-    debugger;
+    // debugger;
   },
 });
 
