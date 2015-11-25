@@ -12,9 +12,8 @@ $fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts";
   margin: auto;
 }
 
-.person-form__submit {
-  margin: 1rem;
-  float: right;
+.person-form__header {
+  text-align: center;
 }
 
 .input-field {
@@ -32,4 +31,9 @@ $fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts";
     float: right;
     padding: 0.2rem;
   }
+}
+
+.person-form__submit {
+  margin: 1rem;
+  float: right;
 }
