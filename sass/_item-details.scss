@@ -1,0 +1,20 @@
+.item-detail {
+  width: 100%;
+  max-width: 1040px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.item-detail__header {
+  margin: 1rem 0;
+}
+
+.item-detail__price {
+  &::before {
+    content: "$"
+  }
+
+  &::after {
+    content: " - "
+  }
+}
