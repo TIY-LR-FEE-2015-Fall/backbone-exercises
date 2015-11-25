@@ -1,4 +1,5 @@
 import ItemModel from './models/item';
+import ItemCollection from './collections/items';
 import ItemForm from './views/item-form';
 
 var Router = Backbone.Router.extend({
@@ -8,6 +9,14 @@ var Router = Backbone.Router.extend({
     new: 'newItemForm',
     ':id': 'details',
     ':id/edit': 'edit',
+  },
+
+  allList() {
+    // Grab all items from the server
+    var allItems = new ItemCollection();
+    allItems.fetch();
+
+    // Show list to user
   },
 
   newItemForm() {
