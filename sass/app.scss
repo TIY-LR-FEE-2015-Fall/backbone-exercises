@@ -4,3 +4,32 @@
 $fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts";
 @import "font-awesome";
 @import "box-sizing";
+
+.person-form {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.person-form__submit {
+  margin: 1rem;
+  float: right;
+}
+
+.input-field {
+  margin: 1rem;
+  overflow: auto;
+
+  label {
+    display: inline-block;
+    width: 8rem;
+    vertical-align: middle;
+  }
+
+  input {
+    vertical-align: middle;
+    float: right;
+    padding: 0.2rem;
+  }
+}
