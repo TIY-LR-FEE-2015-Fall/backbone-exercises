@@ -1,0 +1,34 @@
+.item-form {
+  width: 100%;
+  max-width: 1040px;
+  margin: auto;
+}
+
+.item-form__header {
+  margin: 1rem;
+}
+
+.input-field {
+  margin: 1rem;
+}
+
+.item-form__label {
+  display: block;
+}
+
+.item-form__input {
+  border: 1px solid #afafaf;
+  border-radius: 0.4rem;
+  padding: 0.4rem;
+  width: 50%;
+}
+
+.item-form__submit {
+  margin: 1rem;
+  border: 1px solid #afafaf;
+  border-radius: 0.6rem;
+  padding: 0.6rem 1rem;
+
+  background: $brand_color;
+  color: #fff;
+}

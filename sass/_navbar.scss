@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  list-style: none;
+  padding: 1rem;
+  margin: 0;
+  background: $brand_color;
+
+  li {
+    line-height: 2rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  a {
+    color: #d3d3d3;
+    text-decoration: none;
+  }
+}

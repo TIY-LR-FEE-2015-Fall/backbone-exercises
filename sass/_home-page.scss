@@ -1,0 +1,35 @@
+.items-list {
+  width: 100%;
+  max-width: 1040px;
+  margin: auto;
+  padding: 0;
+  list-style: none;
+
+}
+
+.shop-item {
+  background: #e6d5b1;
+  padding: 1rem 2rem;
+
+  &:nth-of-type(even) {
+    background: #d3d3d3;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.shop-item__price {
+  &::before {
+    content: "$";
+  }
+
+  &::after {
+    content: " - ";
+  }
+}
+
+.shop-item__inventory {
+  float: right;
+}
