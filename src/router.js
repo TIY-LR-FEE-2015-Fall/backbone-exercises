@@ -38,11 +38,30 @@ var Router = Backbone.Router.extend({
     $('#outlet').html(form.el);
   },
 
-  details(id) {
+  /**
+   * Looks up the model and runs on sync
+   * @param  {Function} cb Callback to run if model is found
+   * @return
+   */
+  lookupModel(id, cb) {
     // Look up the item with the id
     this.collection.on('sync', () => {
       var model = this.collection.get(id);
 
+      if (model) {
+        cb(model);
+      }
+    });
+
+    var model = this.collection.get(id);
+
+    if (model) {
+      cb(model);
+    }
+  },
+
+  details(id) {
+    this.lookupModel(id, (model) => {
       // Show the detail view for the current model
       var detail = new ItemDetail({model});
       $('#outlet').html(detail.el);
