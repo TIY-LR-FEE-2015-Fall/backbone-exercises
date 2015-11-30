@@ -51,6 +51,7 @@ var Router = Backbone.Router.extend({
 
     // Display list of all bookmarks
     this.outletView = new BookmarkList({collection: this.collection});
+    this.outletView.render();
 
     $('#outlet').html(this.outletView.el);
   },

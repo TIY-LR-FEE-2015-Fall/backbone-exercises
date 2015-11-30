@@ -17,6 +17,7 @@ var vendorFiles = [
   'jquery.js',
   'underscore.js',
   'backbone.js',
+  'backbone.marionette.js',
   'require.js',
 ];
 
@@ -24,6 +25,7 @@ var vendorScripts = new Merge([
   'node_modules/jquery/dist',
   'node_modules/requirejs',
   'node_modules/backbone',
+  'node_modules/backbone.marionette/lib',
   'node_modules/underscore',
 ], {overwrite: true});
 
