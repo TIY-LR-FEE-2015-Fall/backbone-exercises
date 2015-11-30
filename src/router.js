@@ -24,6 +24,7 @@ var Router = Backbone.Router.extend({
 
     // Display sidebar
     this.sidebarView = new TagList({collection: this.collection});
+    this.sidebarView.render();
 
     $('.sidebar').html(this.sidebarView.el);
   },
