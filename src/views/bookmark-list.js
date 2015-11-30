@@ -1,22 +1,12 @@
-var ItemView = Backbone.View.extend({
-  model: null,
-
+var ItemView = Marionette.ItemView.extend({
   tagName: 'li',
 
   attributes: {
     class: 'bookmark',
   },
 
-  initialize() {
-    this.render();
-  },
-
   template(model) {
-    return `<a target="_blank" href="${model.get('url')}">${model.get('title')} - ${model.get('tag')}</a>`;
-  },
-
-  render() {
-    this.$el.html(this.template(this.model));
+    return `<a target="_blank" href="${model.url}">${model.title} - ${model.tag}</a>`;
   },
 });
 
