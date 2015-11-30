@@ -39,17 +39,17 @@ export default Backbone.View.extend({
 
       <div class="input-field">
         <label for="bookmark-title" class="bookmark-form__label">Title</label>
-        <input type="text" class="bookmark-form__input" id="bookmark-title" placeholder="Title">
+        <input type="text" class="bookmark-form__input" id="bookmark-title" placeholder="Title" value="${this.model.get('title')}">
       </div>
 
       <div class="input-field">
         <label for="bookmark-url" class="bookmark-form__label">Url</label>
-        <input type="text" class="bookmark-form__input" id="bookmark-url" placeholder="Url">
+        <input type="text" class="bookmark-form__input" id="bookmark-url" placeholder="Url" value="${this.model.get('url')}">
       </div>
 
       <div class="input-field">
         <label for="bookmark-tag" class="bookmark-form__label">Tag</label>
-        <input type="text" class="bookmark-form__input" id="bookmark-tag" placeholder="Tag">
+        <input type="text" class="bookmark-form__input" id="bookmark-tag" placeholder="Tag" value="${this.model.get('tag')}">
       </div>
 
       <button class="bookmark-form__submit">Submit</button>

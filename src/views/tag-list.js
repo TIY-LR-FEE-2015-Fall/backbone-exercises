@@ -1,6 +1,12 @@
 var ItemView = Backbone.View.extend({
   tagName: 'li',
 
+  /**
+   * Current Tag Name
+   * @type {String}
+   */
+  model: null,
+
   attributes: {
     class: 'tag',
   },
@@ -19,6 +25,8 @@ var ItemView = Backbone.View.extend({
 export default Backbone.View.extend({
   collection: null,
 
+  currentItemViews: [],
+
   tagName: 'ul',
 
   attributes: {
@@ -32,12 +40,19 @@ export default Backbone.View.extend({
   },
 
   render() {
+    this.currentItemViews.forEach(function(itemView) {
+      itemView.remove();
+    });
+
+    this.currentItemViews = [];
+
     this.$el.empty();
 
     this.collection.map((bookmark) => {
       return bookmark.attributes.tag;
-    }).forEach((model) => {
-      var itemView = new ItemView({model});
+    }).forEach((tagName) => {
+      var itemView = new ItemView({model: tagName});
+      this.currentItemViews.push(itemView);
 
       this.$el.append(itemView.render());
     });

@@ -7,6 +7,9 @@ import TagList from './views/tag-list';
 var Router = Backbone.Router.extend({
   collection: null,
 
+  sidebarView: null,
+  outletView: null,
+
   routes: {
     new: 'newBookmark',
     '': 'index',
@@ -20,26 +23,36 @@ var Router = Backbone.Router.extend({
     this.collection.fetch();
 
     // Display sidebar
-    var list = new TagList({collection: this.collection});
+    this.sidebarView = new TagList({collection: this.collection});
 
-    $('.sidebar').html(list.el);
+    $('.sidebar').html(this.sidebarView.el);
+  },
+
+  cleanupViews() {
+    if (this.outletView) {
+      this.outletView.remove();
+    }
   },
 
   newBookmark() {
+    this.cleanupViews();
+
     // Create a new bookmark instance
     var bookmark = new BookmarkModel();
 
     // Display bookmark form to user
-    var form = new BookmarkForm({model: bookmark, collection: this.collection});
+    this.outletView = new BookmarkForm({model: bookmark, collection: this.collection});
 
-    $('#outlet').html(form.el);
+    $('#outlet').html(this.outletView.el);
   },
 
   index() {
-    // Display list of all bookmarks
-    var list = new BookmarkList({collection: this.collection});
+    this.cleanupViews();
 
-    $('#outlet').html(list.el);
+    // Display list of all bookmarks
+    this.outletView = new BookmarkList({collection: this.collection});
+
+    $('#outlet').html(this.outletView.el);
   },
 });
 
