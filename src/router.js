@@ -6,9 +6,7 @@ import TagList from './views/tag-list';
 
 var Router = Backbone.Router.extend({
   collection: null,
-
-  sidebarView: null,
-  outletView: null,
+  regions: null,
 
   routes: {
     new: 'newBookmark',
@@ -17,44 +15,38 @@ var Router = Backbone.Router.extend({
   },
 
   initialize() {
+    this.regions = new Marionette.RegionManager({
+      regions: {
+        main: '#outlet',
+        sidebar: '.sidebar',
+      },
+    });
+
     this.collection = new BookmarkCollection();
 
     // Grab all bookmarks from server
     this.collection.fetch();
 
     // Display sidebar
-    this.sidebarView = new TagList({collection: this.collection});
-    this.sidebarView.render();
-
-    $('.sidebar').html(this.sidebarView.el);
-  },
-
-  cleanupViews() {
-    if (this.outletView) {
-      this.outletView.remove();
-    }
+    var sidebarView = new TagList({collection: this.collection});
+    this.regions.get('sidebar').show(sidebarView);
   },
 
   newBookmark() {
-    this.cleanupViews();
-
     // Create a new bookmark instance
     var bookmark = new BookmarkModel();
 
     // Display bookmark form to user
-    this.outletView = new BookmarkForm({model: bookmark, collection: this.collection});
+    var formView = new BookmarkForm({model: bookmark, collection: this.collection});
 
-    $('#outlet').html(this.outletView.el);
+    this.regions.get('main').show(formView);
   },
 
   index() {
-    this.cleanupViews();
-
     // Display list of all bookmarks
-    this.outletView = new BookmarkList({collection: this.collection});
-    this.outletView.render();
+    var listView = new BookmarkList({collection: this.collection});
 
-    $('#outlet').html(this.outletView.el);
+    this.regions.get('main').show(listView);
   },
 });
 
